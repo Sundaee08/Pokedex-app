@@ -6,15 +6,10 @@ import 'package:http/http.dart' as http;
 
 void main() => runApp(const MyApp());
 
-
-
 const testMode = '';
 
+// Data model sa aning POkemon
 
-
-// ---------------------------------------------------------------------------
-// Data model
-// ---------------------------------------------------------------------------
 
 class Pokemon {
   final int id;
@@ -38,9 +33,6 @@ class Pokemon {
     required this.moves,
     required this.stats,
   });
-
-  // Turns the decoded JSON map into a Pokemon object.
-  // Throws FormatException if required fields are missing or the wrong type.
   factory Pokemon.fromJson(Map<String, dynamic> json) {
     final id = json['id'];
     final name = json['name'];
@@ -51,7 +43,6 @@ class Pokemon {
       throw const FormatException('Missing or invalid Pokemon fields.');
     }
 
-    // Sprite: prefer the HOME artwork, fall back to the normal sprite.
     String? imageUrl;
     final sprites = json['sprites'];
     if (sprites is Map) {
@@ -65,8 +56,6 @@ class Pokemon {
         imageUrl = frontImage;
       }
     }
-
-    // Stats are stored by name, so the order of the list doesn't matter.
     final stats = <String, int>{};
     final rawStats = json['stats'];
     if (rawStats is List) {
@@ -93,9 +82,6 @@ class Pokemon {
       stats: stats,
     );
   }
-
-  // Helper: pulls out ["name"] from lists shaped like
-  // [{ "type": { "name": "electric" } }, ...]
   static List<String> _names(dynamic list, String key) {
     if (list is! List) return [];
     final result = <String>[];
@@ -109,7 +95,6 @@ class Pokemon {
   }
 }
 // Service naay error handler when the API is right akoang pagsabot rasad 
-
 class ApiException implements Exception {
   final int statusCode;
   const ApiException(this.statusCode);
