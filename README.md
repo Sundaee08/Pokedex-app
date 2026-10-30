@@ -91,9 +91,3 @@ With no connection, the app never receives an HTTP response, so the problem is w
 
 It could store each successfully retrieved Pokémon locally (for example with `shared_preferences` or a local database) along with the time it was saved. When a request fails due to a connection problem, the app would display the saved copy with a notice that the data may be outdated and a button to refresh once the connection returns.
 
-## References
-
-- Dart. (n.d.). *dart:convert library*. https://dart.dev/libraries/dart-convert
-- Flutter. (n.d.). *Fetch data from the internet*. https://docs.flutter.dev/cookbook/networking/fetch-data
-- Flutter. (n.d.). *Offline-first support*. https://docs.flutter.dev/app-architecture/design-patterns/offline-first
-- Mozilla. (n.d.). *HTTP response status codes*. MDN Web Docs. https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status
